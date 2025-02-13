@@ -1,0 +1,123 @@
+
+@import "~bootstrap/scss/bootstrap";
+@import "@vueform/vueform/themes/bootstrap/scss/index.scss";
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+}
+  
+  /* Navbar */
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  /* Forms */
+  form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-backdrop {
+    background-color: #000;
+    z-index: 99;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.2s ease-in;
+    visibility: hidden;
+  
+    &.show {
+      opacity: 0.5;
+      visibility: visible;
+    }
+  }
+  
+  
+  .form-modal {
+    transform: translateX(100%);
+    background-color: #fff;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    transition: transform 0.2s ease-in;
+  
+    &.show {
+      transform: translateX(0);
+    }
+  
+    &--footer {
+      padding: 14px;
+    }
+  
+    &--header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #626262;
+  
+      h3 {
+        color: #fff;
+      }
+  
+      button {
+        border: none;
+      }
+    }
+  }
+  
+  /* Loading line styles */
+  .loading-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    overflow: hidden;
+    z-index: 9999;
+    background: none;
+  }
+  
+  .loading-line::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%; /* Width of the moving bar */
+    background: linear-gradient(90deg, #3498db, #4fa3e4, #3498db); /* Subtle gradient */
+    animation: smooth-loading 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    will-change: transform;
+  }
+  
+  /* Keyframes for the loading animation */
+  @keyframes smooth-loading {
+    0% {
+        transform: translateX(-100%);
+    }
+   
+    50% {
+        transform: translateX(50%);
+    }
+  
+    100% {
+        transform: translateX(100%);
+    }
+  }
+  
+  /* Hide the loading line when not needed */
+  .loading-line {
+    &.hidden {
+      display: none;
+    }
+  }
