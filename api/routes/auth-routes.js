@@ -1,16 +1,16 @@
 import express from "express"
 import { check } from "express-validator"
-import { signup, login, validateToken } from "../controllers/auth-controller.js"
+import { register, login, validateToken } from "../controllers/auth-controller.js"
 
 const router = express.Router()
 
-router.post("/signup", 
+router.post("/register", 
     [
         check("name").not().isEmpty(),
         check("email").normalizeEmail().isEmail(),
         check("password").isLength({ min: 6 })
     ], 
-    signup
+    register
 )
 
 router.post("/login", 

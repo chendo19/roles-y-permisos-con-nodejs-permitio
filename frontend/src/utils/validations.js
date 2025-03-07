@@ -1,4 +1,4 @@
-import httpRequest from '../utils/httpRequest.js'
+import httpRequest from './httpRequest.js'
 const { axiosCall } = httpRequest()
 
 export const validateRouteToken = async () => {

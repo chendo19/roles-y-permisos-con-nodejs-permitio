@@ -156,7 +156,7 @@ const submitHandler = async () => {
     <div class="container my-5">
         <div class="row mb-3">
             <div class="col-4">
-                <button class="btn btn-primary" @click="showModal = true">Add User</button>
+                <button class="btn btn-primary" @click="showModal = true">{{ $t('add_user') }}</button>
             </div>
             
         </div>
@@ -164,7 +164,7 @@ const submitHandler = async () => {
             <table  class="table">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>{{ $t('name') }}</th>
                         <th>Email</th>
                         <th>Role</th>
                         <th></th>

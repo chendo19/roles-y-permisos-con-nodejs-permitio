@@ -6,7 +6,7 @@ import HttpError from "../utils/http-error.js"
 import { createOrUpdatePermitUser, assignPermitRole } from "../utils/permit.js"
 import { verifyTokenOnFrontend } from "../utils/validations.js"
 
-export const signup = async (req, res, next) => {
+export const register = async (req, res, next) => {
     const errors = validationResult(req)
 
     if (!errors.isEmpty()) {
@@ -98,7 +98,7 @@ export const login = async (req, res, next) => {
     }
 
     if (!existingUser) {
-        return next(new HttpError("User does not exist, please signup instead", 422))
+        return next(new HttpError("User does not exist, please register instead", 422))
     }
 
     if (!bcrypt.compareSync(password, existingUser.password)) {

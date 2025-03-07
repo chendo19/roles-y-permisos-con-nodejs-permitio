@@ -37,10 +37,10 @@ const props = defineProps({
         <td>{{ user.email }}</td>
         <td>{{ user.role.toUpperCase() }}</td>
         <td>
-            <button class="btn btn-primary" :disabled="isLoading" @click="emitEditHandler({ user, index })">Edit</button>
+            <button class="btn btn-primary" :disabled="isLoading" @click="emitEditHandler({ user, index })">{{ $t('edit') }}</button>
         </td>
         <td>
-            <button class="btn btn-danger" :disabled="isLoading" @click="emitDeleteHandler({ user, index })">Delete</button>
+            <button class="btn btn-danger" :disabled="isLoading" @click="emitDeleteHandler({ user, index })">{{ $t('delete') }}</button>
         </td>
         <td>
             <button class="btn btn-secondary" :disabled="isLoading" @click="emitRoleHandler({ userDbId: user._id, userPermitID: user.permit_id, currentRole: user.role, newRole: user.role === 'editor' ? 'moderator' : 'editor', index })">
