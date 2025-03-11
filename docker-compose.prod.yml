@@ -3,8 +3,6 @@ services:
   mongo:
     image: mongo:7.0.12
     restart: unless-stopped
-    ports:
-      - 27017:27017
     volumes:
       - mongo_data:/data/db
     networks:
@@ -15,14 +13,14 @@ services:
       context: ./api
       dockerfile: ../docker/api/Dockerfile #Affected by context? yes
       args:
-        - NODE_ENV: development
+        - NODE_ENV: production
     restart: unless-stopped
     volumes: #volumes: Always Uses Host Paths, Affected by context? no
       - ./api:/app
       - /app/node_modules # for persistent node_modules, this ignores local node_modules and usess the one from the container
     working_dir: /app
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
     ports:
       - 5050:5050
     networks:
@@ -35,19 +33,32 @@ services:
       context: ./frontend
       dockerfile: ../docker/frontend/Dockerfile
       args:
-        - NODE_ENV: development
+        - NODE_ENV: production
     restart: unless-stopped
     volumes: #volumes: Always Uses Host Paths, Affected by context? no
       - ./frontend:/app
       - /app/node_modules # for persistent node_modules, this ignores local node_modules and usess the one from the container
     working_dir: /app
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
     ports:
       - 5172:5172
     networks:
       - express-permit
     depends_on:
+      - api
+
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - express-permit
+    depends_on:
+      - frontend
       - api
 
 volumes:
