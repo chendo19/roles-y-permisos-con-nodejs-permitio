@@ -13,14 +13,14 @@ services:
       context: ./api
       dockerfile: ../docker/api/Dockerfile #Affected by context? yes
       args:
-        - NODE_ENV: production
+        - NODE_ENV=${NODE_ENV:-'production'}
     restart: unless-stopped
     volumes: #volumes: Always Uses Host Paths, Affected by context? no
       - ./api:/app
       - /app/node_modules # for persistent node_modules, this ignores local node_modules and usess the one from the container
     working_dir: /app
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=${NODE_ENV:-'production'}
     ports:
       - 5050:5050
     networks:

@@ -10,7 +10,6 @@ FROM base AS development
 CMD ["npm", "run", "dev"]
 
 FROM base AS production
-RUN npm run build # If applicable
 CMD ["npm", "run", "start"]
 
 # Select the correct stage based on build argument
