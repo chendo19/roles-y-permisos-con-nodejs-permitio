@@ -14,7 +14,7 @@ services:
       dockerfile: ../docker/api/Dockerfile #Affected by context? yes
       args:
         - NODE_ENV=${NODE_ENV:-'production'}
-    restart: unless-stopped
+    restart: always
     volumes: #volumes: Always Uses Host Paths, Affected by context? no
       - ./api:/app
       - /app/node_modules # for persistent node_modules, this ignores local node_modules and usess the one from the container
@@ -34,7 +34,7 @@ services:
       dockerfile: ../docker/frontend/Dockerfile
       args:
         - NODE_ENV=${NODE_ENV:-'production'}
-    restart: unless-stopped
+    restart: always
     volumes: #volumes: Always Uses Host Paths, Affected by context? no
       - ./frontend:/app
       - /app/node_modules # for persistent node_modules, this ignores local node_modules and usess the one from the container
@@ -42,7 +42,7 @@ services:
     environment:
       - NODE_ENV=${NODE_ENV:-'production'}
     ports:
-      - 5172:5172
+      - 5172:80
     networks:
       - express-permit
     depends_on:

@@ -8,12 +8,15 @@ COPY . .
 
 # Development stage
 FROM base AS development
+EXPOSE 5172
 CMD ["npm", "run", "dev", "--", "--host"]
 
 # Production stage (build frontend)
 FROM base AS build
 RUN npm run build
 
-# Select stage based on NODE_ENV
-ARG NODE_ENV
-FROM ${NODE_ENV:-'production'} AS final
+# Production stage (build frontend)
+FROM nginx:1.25.1-alpine AS production
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
