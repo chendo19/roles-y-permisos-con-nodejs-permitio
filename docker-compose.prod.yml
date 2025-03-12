@@ -9,6 +9,8 @@ services:
       - express-permit
 
   api:
+    env_file:
+      - .env
     build:
       context: ./api
       dockerfile: ../docker/api/Dockerfile #Affected by context? yes
@@ -29,6 +31,8 @@ services:
       - mongo
 
   frontend:
+    env_file:
+      - .env
     build:
       context: ./frontend
       dockerfile: ../docker/frontend/Dockerfile

@@ -11,7 +11,7 @@ import commentsRoutes from './routes/comments-routes.js'
 dotenv.config()
 
 const app = express()
-const port = process.env.API_PORT || 4000
+const port = process.env.API_PORT || 5050
 
 app.use(cors({
   origin: process.env.PUBLIC_URL,
@@ -21,6 +21,10 @@ app.use(cors({
 
 app.use(express.json())
 app.use(cookieParser())
+
+app.get('/', (req, res) => {
+  res.json({ message: "API is running..." });
+})
 
 app.use('/api/auth', authRoutes)
 app.use('/api/users', usersRoutes)
@@ -37,7 +41,7 @@ app.use((err, req, res, next) => {
 mongoose.connect('mongodb://mongo:27017/permissions-app-db')
 .then(() => {
     app.listen(port, () => {
-      console.log(`Example app listening on port ${port}`)
+      console.log(`API app listening on port ${port}`)
     })
   })
   .catch(err => {

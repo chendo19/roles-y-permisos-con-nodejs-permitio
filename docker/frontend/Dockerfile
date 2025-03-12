@@ -1,6 +1,9 @@
 # Base stage
 FROM node:22-bookworm-slim AS base
 
+ARG NODE_ENV
+ENV NODE_ENV $NODE_ENV
+
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
