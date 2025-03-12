@@ -12,8 +12,6 @@ services:
     build:
       context: ./api
       dockerfile: ../docker/api/Dockerfile #Affected by context? yes
-      args:
-        - NODE_ENV=${NODE_ENV:-'production'}
     restart: always
     volumes: #volumes: Always Uses Host Paths, Affected by context? no
       - ./api:/app
@@ -32,8 +30,6 @@ services:
     build:
       context: ./frontend
       dockerfile: ../docker/frontend/Dockerfile
-      args:
-        - NODE_ENV=${NODE_ENV:-'production'}
     restart: always
     volumes: #volumes: Always Uses Host Paths, Affected by context? no
       - ./frontend:/app
