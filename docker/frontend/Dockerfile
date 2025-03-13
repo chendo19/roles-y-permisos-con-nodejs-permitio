@@ -5,9 +5,10 @@ ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
 
 WORKDIR /app
-COPY package*.json ./
+COPY package*.json package-lock.json ./
 RUN npm ci
 COPY . .
+RUN ls -la
 
 # Development stage
 FROM base AS development
@@ -16,6 +17,7 @@ CMD ["npm", "run", "dev", "--", "--host"]
 
 # Production stage (build frontend)
 FROM base AS build
+RUN npm list vite  # Debug: Check if vite is installed
 RUN npm run build
 
 # Production stage (build frontend)
