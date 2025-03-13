@@ -46,7 +46,7 @@ services:
     environment:
       - NODE_ENV=${NODE_ENV:-'production'}
     ports:
-      - "${DOCKER_NGINX_PORT:-80}:5172"
+      - 80:80
     networks:
       - express-permit
     depends_on:

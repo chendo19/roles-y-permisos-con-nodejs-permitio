@@ -15,8 +15,8 @@ EXPOSE 5172
 CMD ["npm", "run", "dev", "--", "--host"]
 
 # Production stage (build frontend)
-#FROM base AS build
-#RUN npm run build
+FROM base AS build
+RUN npm run build
 
 # Production stage (build frontend)
 FROM nginx:1.25.1-alpine AS production

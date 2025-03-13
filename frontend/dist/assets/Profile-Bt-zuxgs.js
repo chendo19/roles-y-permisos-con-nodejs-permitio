@@ -1,1 +1,0 @@
-import{u as r,s as n,c,a as l,t as e,f as t,o as u}from"./index--K2Yny0p.js";const m={__name:"Profile",setup(f){const o=r(),{name:s,role:a}=n(o);return(_,i)=>(u(),c("div",null,[l("h1",null,"Profile - "+e(t(s))+" - "+e(t(a)),1)]))}};export{m as default};
