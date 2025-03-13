@@ -9,9 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^5.2.1",
-    "sass": "^1.84.0",
-    "vite": "^6.0.5",
     "@teamhanko/hanko-elements": "^1.3.0",
     "@tolgee/vue": "^6.2.2",
     "@vueform/vueform": "^1.12.3",
