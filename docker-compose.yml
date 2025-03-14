@@ -16,6 +16,7 @@ services:
     build:
       context: ./api
       dockerfile: ../docker/api/Dockerfile #Affected by context? yes
+      target: development
       args:
         - NODE_ENV=${NODE_ENV:-'development'}
     restart: unless-stopped
@@ -38,6 +39,7 @@ services:
     build:
       context: ./frontend
       dockerfile: ../docker/frontend/Dockerfile
+      target: development
       args:
         - NODE_ENV=${NODE_ENV:-'development'}
     restart: unless-stopped

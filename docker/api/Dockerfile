@@ -12,6 +12,7 @@ FROM base AS production
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --only=production
+COPY . .
 CMD ["npm", "run", "start"]
 
 # Select the correct stage based on build argument
