@@ -1,6 +1,8 @@
 FROM node:22-bookworm-slim AS base
 ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
+
+RUN echo "API NODE_ENV is set to: $NODE_ENV"
 # Separate stages for dev and prod
 FROM base AS development
 WORKDIR /app
