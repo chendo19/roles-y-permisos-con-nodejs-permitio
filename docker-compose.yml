@@ -15,17 +15,12 @@ services:
       - .env
     build:
       context: ./api
-      dockerfile: ../docker/api/Dockerfile #Affected by context? yes
-      target: development
-      args:
-        - NODE_ENV=${NODE_ENV:-'development'}
+      dockerfile: ../docker/api/Dockerfile.dev #Affected by context? yes
     restart: unless-stopped
     volumes: #volumes: Always Uses Host Paths, Affected by context? no
       - ./api:/app
       - /app/node_modules # for persistent node_modules, this ignores local node_modules and usess the one from the container
     working_dir: /app
-    environment:
-      - NODE_ENV=${NODE_ENV:-'development'}
     ports:
       - 5050:5050
     networks:
@@ -38,17 +33,12 @@ services:
       - .env
     build:
       context: ./frontend
-      dockerfile: ../docker/frontend/Dockerfile
-      target: development
-      args:
-        - NODE_ENV=${NODE_ENV:-'development'}
+      dockerfile: ../docker/frontend/Dockerfile.dev
     restart: unless-stopped
     volumes: #volumes: Always Uses Host Paths, Affected by context? no
       - ./frontend:/app
       - /app/node_modules # for persistent node_modules, this ignores local node_modules and usess the one from the container
     working_dir: /app
-    environment:
-      - NODE_ENV=${NODE_ENV:-'development'}
     ports:
       - 5172:5172
     networks:

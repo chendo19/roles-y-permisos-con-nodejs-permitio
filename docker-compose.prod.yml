@@ -13,14 +13,9 @@ services:
       - .env
     build:
       context: ./api
-      dockerfile: ../docker/api/Dockerfile #Affected by context? yes
-      target: production
-      args:
-        - NODE_ENV=${NODE_ENV:-'production'}
+      dockerfile: ../docker/api/Dockerfile.prod #Affected by context? yes
     restart: always
     working_dir: /app
-    environment:
-      - NODE_ENV=${NODE_ENV:-'production'}
     ports:
       - 5050:5050
     networks:
@@ -33,14 +28,9 @@ services:
       - .env
     build:
       context: ./frontend
-      dockerfile: ../docker/frontend/Dockerfile
-      target: production
-      args:
-        - NODE_ENV=${NODE_ENV:-'production'}
+      dockerfile: ../docker/frontend/Dockerfile.prod
     restart: always
     working_dir: /app
-    environment:
-      - NODE_ENV=${NODE_ENV:-'production'}
     ports:
       - 80:80
     networks:
@@ -50,7 +40,6 @@ services:
 
 volumes:
   mongo_data:
-  node_modules:
 networks:
   express-permit:
     driver: bridge
