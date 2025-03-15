@@ -37,8 +37,8 @@ app.use((err, req, res, next) => {
   return res.status(status).json({ message, success: false })
 })
 
-//mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=${process.env.DB_APP_NAME}`)
-mongoose.connect('mongodb://mongo:27017/permissions-app-db')
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=${process.env.DB_APP_NAME}`)
+//mongoose.connect('mongodb://mongo:27017/permissions-app-db')
 .then(() => {
     app.listen(port, () => {
       console.log(`API listening on port ${port}`)

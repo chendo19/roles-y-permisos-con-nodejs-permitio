@@ -28,6 +28,7 @@ const httpRequest = () => {
 
             return response?.data
         } catch (error) {
+            console.log('error', error)
             const errors = error?.response?.data?.message || 'Something went wrong'
             handleToast({ type: 'error', messages: errors })
         } finally {

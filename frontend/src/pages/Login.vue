@@ -1,6 +1,6 @@
 
 <script setup>
-import { reactive, onMounted } from 'vue'
+import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/authStore.js'
 import httpRequest from '../utils/httpRequest.js'
