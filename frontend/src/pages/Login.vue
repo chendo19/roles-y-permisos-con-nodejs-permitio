@@ -30,36 +30,13 @@ const submitHandler = async () => {
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h2>{{ $t('login') }}</h2>
-                <Vueform :endpoint="false" @submit="submitHandler" v-model="userForm" :display-errors="false" sync>
-                  <TextElement
-                    name="email"
-                    input-type="email"
-                    :rules="[
-                      'required',
-                      'max:255',
-                      'email',
-                    ]"
-                    placeholder="Email"
-                    field-name="Email"
-                  />
-                  <TextElement
-                    name="password"
-                    input-type="password"
-                    :rules="[
-                      'required',
-                      'min:6',
-                    ]"
-                    field-name="Password"
-                    :placeholder="$t('password')"
-                  />
-                  <ButtonElement
-                    name="register"
-                    :submits="true"
-                    :button-label="isLoading ? '' : $t('login')"
-                    :full="true"
-                    :disabled="isLoading"
-                  ></ButtonElement>
-                </Vueform>
+                <form @submit.prevent="submitHandler">
+                  <input v-model="userForm.email" placeholder="Email" type="email" class="form-control mb-3">
+                  <input v-model="userForm.password" type="password" placeholder="Password" class="form-control mb-3">
+                  <button type="submit" :disabled="isLoading" class="btn btn-primary">
+                    {{ isLoading ? 'Loading...' : 'Login' }}
+                  </button>
+                </form>
             </div>
         </div>
     </div>
