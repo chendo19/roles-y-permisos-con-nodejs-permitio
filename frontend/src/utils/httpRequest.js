@@ -2,7 +2,7 @@ import axios from "axios"
 import { ref } from "vue"
 import { handleToast } from "./handleToast"
 
-axios.defaults.baseURL = import.meta.env.VITE_API_BASE
+axios.defaults.baseURL = 'https://api.devtestcode.com'
 
 const httpRequest = () => {
     const isLoading = ref(false)
