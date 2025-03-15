@@ -4,13 +4,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue({
-    template: {
-      compilerOptions: {
-        isCustomElement: (tag) => tag.startsWith("hanko-")
-      }
-  }
-  })],
+  plugins: [vue()],
   server: {
     host: true,
   },

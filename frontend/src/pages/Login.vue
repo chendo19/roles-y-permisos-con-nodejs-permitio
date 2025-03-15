@@ -4,12 +4,10 @@ import { reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/authStore.js'
 import httpRequest from '../utils/httpRequest.js'
-import { register } from "@teamhanko/hanko-elements"
 
 const userStore = useAuthStore()
 const router = useRouter()
 const { axiosCall, isLoading } = httpRequest()
-const hankoApi = import.meta.env.VITE_HANKO_API_URL
 
 const userForm = reactive({
     email: '',
@@ -25,16 +23,6 @@ const submitHandler = async () => {
     }
 }
 
-const redirectAfterLogin = () => {
-  router.push({ name: 'home' })
-}
-
-onMounted(() => {
-  register(hankoApi)
-    .catch((error) => {
-      console.log('error: ', error)
-    })
-})
 </script>
 
 <template>
