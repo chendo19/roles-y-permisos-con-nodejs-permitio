@@ -14,7 +14,7 @@ const app = express()
 const port = process.env.API_PORT || 4000
 
 app.use(cors({
-  origin: 'https://devtestcode.com',
+  origin: process.env.PUBLIC_URL,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
   credentials: true
 }))
@@ -38,9 +38,9 @@ app.use((err, req, res, next) => {
 })
 
 
-//mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=${process.env.DB_APP_NAME}`)
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=${process.env.DB_APP_NAME}`)
 //mongoose.connect('mongodb://mongo:27017/permissions-app-db')
-mongoose.connect('mongodb+srv://chendo1988:a2W8l9U4qx3my7IH@permissions-db.bdpl8.mongodb.net/test?retryWrites=true&w=majority&appName=permissions-db')
+//mongoose.connect('mongodb+srv://chendo1988:a2W8l9U4qx3my7IH@permissions-db.bdpl8.mongodb.net/test?retryWrites=true&w=majority&appName=permissions-db')
 .then(() => {
     app.listen(port, () => {
       console.log(`API listening on port ${port}`)
