@@ -16,6 +16,7 @@ services:
     build:
       context: ./api
       dockerfile: ../docker/api/Dockerfile.dev #Affected by context? yes
+    container_name: api-app
     restart: unless-stopped
     volumes: #volumes: Always Uses Host Paths, Affected by context? no
       - ./api:/app
@@ -34,6 +35,7 @@ services:
     build:
       context: ./frontend
       dockerfile: ../docker/frontend/Dockerfile.dev
+    container_name: frontend-app
     restart: unless-stopped
     volumes: #volumes: Always Uses Host Paths, Affected by context? no
       - ./frontend:/app

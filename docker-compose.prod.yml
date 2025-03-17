@@ -12,7 +12,8 @@ services:
     build:
       context: ./api
       dockerfile: ../docker/api/Dockerfile.prod #Affected by context? yes
-    restart: always
+    container_name: api-app
+    restart: unless-stopped
     working_dir: /app
     ports:
       - 5050:5050
@@ -25,7 +26,8 @@ services:
     build:
       context: ./frontend
       dockerfile: ../docker/frontend/Dockerfile.prod
-    restart: always
+    container_name: frontend-app
+    restart: unless-stopped
     working_dir: /app
     ports:
       - 80:80
